@@ -1,0 +1,13 @@
+import requests
+from bs4 import BeautifulSoup 
+
+url = "http://r64vsk.lv"
+
+response = requests.get(url)
+print(response)
+
+
+soup = BeautifulSoup(response.text, 'html.parser')
+
+izmainas = soup.find(class_="r64-events").text
+print(izmainas)
