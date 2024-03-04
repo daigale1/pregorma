@@ -1,0 +1,17 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "http://r64vsk.lv"
+
+response = requests.get(url)
+klase = input("Ievadi klasi (piem. 9.a, 11.INZ): ")
+soup = BeautifulSoup(response.text, "html.parser")
+
+izmainas = soup.find(class_="r64-events")
+if izmainas:
+    lines = izmainas.get_text("\n").split("\n")
+    for line in lines:
+        if klase in line:
+            print(line.strip())
+else:
+    print("Nav izmaiņu izvēlētajai klasei.")
