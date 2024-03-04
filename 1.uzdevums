@@ -6,6 +6,7 @@ url = "http://r64vsk.lv"
 response = requests.get(url)
 print(response)
 
+
 soup = BeautifulSoup(response.text, 'html.parser')
 
 tagi = soup.find_all("h1")
